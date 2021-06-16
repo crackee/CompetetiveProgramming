@@ -14,13 +14,63 @@ public class Main {
         int k=87958;
         int n=226036;
         char ch='F';
+        int[][] matrix1={{1,2,3},{4,5,6},{7,8,9}},matrix={{1},{3}};
+        searchMatrix(matrix,3);
+       // rotate(matrix);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(matrix[i][j]);
+            }
+            System.out.println("");
+        }
 
+        System.out.println();
         //System.out.print(printSequence(" JVWN"));
        // System.out.print(multiplyby11("9621"));
        // System.out.println(fun(s,k,n,ch));
     }
 
 
+    static boolean searchMatrix(int[][] matrix, int target) {
+        int r=0;
+
+        for(int i=0;i<matrix.length;i++){
+            if(target<=matrix[i][matrix[0].length -1]){
+                for(int j=0;j<matrix[0].length;j++){
+                    if(matrix[i][j]==target){
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+    static void rotate(int[][] matrix) {
+        int n=matrix.length;
+        // int[][] dup=new int[n][n];
+
+        //reverse all cloumn values
+        for(int i=0;i<n;i++){
+            int r=matrix[n-1][i];
+            for(int j=0;j<n/2;j++){
+                int temp=matrix[j][i];
+                matrix[j][i]=matrix[n-1-j][i];
+                matrix[n-1-j][i]=temp;
+            }
+        }
+
+        //convert colomns into rows
+
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                int temp=matrix[i][j];
+                matrix[i][j]=matrix[j][i];
+                matrix[j][i]=temp;
+            }
+        }
+
+    }
     static String printSequence(String S)  //ONLY cAPS STRING ALLOWED!!!
     {
         // code here
